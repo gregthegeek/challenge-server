@@ -23,7 +23,9 @@ const userSchema = new mongoose.Schema({
     location: { type: String, default: '' },
     website: { type: String, default: '' },
     picture: { type: String, default: '' }
-  }
+  },
+
+  pubKey: String
 }, { timestamps: true });
 
 /**
