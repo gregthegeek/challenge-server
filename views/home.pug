@@ -12,7 +12,16 @@ block content
         a.btn.btn-default(href='/gen-keys', role='button') Download new private key
     .col-sm-6
       h2 Encrypt a file
-      p Upload a file to download an encrypted version.
+      p Upload a file to download a version encrypted with your public key.
       form(method='POST', action='/encrypt', enctype='multipart/form-data')
         input(type='file', name='file')
         button.btn.btn-default(type='submit') Download encrypted
+  .row
+    .col-sm-12
+      h2 Decrypt a file.
+      form(method='POST', action='/decrypt', enctype='multipart/form-data')
+        label(for='key') Private key
+        input(type='file', name='key', id='key')
+        label(for='file') File
+        input(type='file', name='file', id='file')
+        button.btn.btn-default(type='submit') Download decrypted
