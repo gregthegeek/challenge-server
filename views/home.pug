@@ -12,7 +12,7 @@ block content
         a.btn.btn-default(href='/gen-keys', role='button') Download new private key
     .col-sm-6
       h2 Encrypt a file
-      form(method='POST', action='/encrypt')
-        input(type='file')
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+      p Upload a file to download an encrypted version.
+      form(method='POST', action='/encrypt', enctype='multipart/form-data')
+        input(type='file', name='file')
+        button.btn.btn-default(type='submit') Download encrypted

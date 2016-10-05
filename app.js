@@ -83,7 +83,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (req.path === '/api/upload' || req.path === '/encrypt') {
     next();
   } else {
     lusca.csrf()(req, res, next);
@@ -130,6 +130,9 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
 app.get('/gen-keys', homeController.genKeys);
+app.post('/encrypt', multer({
+  storage: multer.memoryStorage()
+}).single('file'), homeController.encrypt);
 
 /**
  * API examples routes.

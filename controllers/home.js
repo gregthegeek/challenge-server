@@ -26,3 +26,13 @@ exports.genKeys = (req, res) => {
   res.setHeader('Content-disposition', 'attachment; filename=privkey.txt');
   res.send(privKey);
 };
+
+exports.encrypt = (req, res) => {
+  console.log('req.file', req.file);
+  const orig = req.file.buffer;
+  const enc = crypto.publicEncrypt(req.user.pubKey, orig);
+
+  // TODO escape or change filename (for security purposes)
+  res.setHeader('Content-disposition', 'attachment; filename=' + req.file.originalname);
+  res.send(enc);
+};
