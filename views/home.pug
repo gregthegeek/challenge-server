@@ -9,12 +9,19 @@ block content
       h2 Generate new keys
       p Click the button to generate a new public/private keypair and download the private key (may take a few seconds).
       p
-        a.btn.btn-default(href='/gen-keys', role='button') Download new private key
+        a.btn.btn-default(href='/gen-keys', role='button', id='genKey') Download new private key
     .col-sm-6
       h2 Encrypt a file
       p Upload a file to download a version encrypted with your public key.
       form(method='POST', action='/encrypt', enctype='multipart/form-data')
-        input(type='file', name='file')
+        label(for='file') File
+        input(type='file', name='file', id='file')
+        label(for='pubChoice') Public key
+        select(name='pubChoice', id='pubChoice')
+          each pubKey, index in pubKeys
+            option(value=index)= '(' + (index + 1) + ') ' + pubKey
+          else
+            option(value='-1') You have no keys yet!
         button.btn.btn-default(type='submit') Download encrypted
   .row
     .col-sm-12

@@ -1,5 +1,11 @@
+'use strict';
+
 $(document).ready(function() {
-
-  // Place JavaScript code here...
-
+  console.log('loaded');
+  $('#genKey').click(function() {
+    console.log('hello');
+    setTimeout(function() {
+      location.reload();
+    }, 100);
+  });
 });

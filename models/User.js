@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     picture: { type: String, default: '' }
   },
 
-  pubKey: String
+  pubKeys: [String]
 }, { timestamps: true });
 
 /**
