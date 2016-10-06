@@ -6,6 +6,6 @@ $(document).ready(function() {
     console.log('hello');
     setTimeout(function() {
       location.reload();
-    }, 100);
+    }, 5000);
   });
 });
